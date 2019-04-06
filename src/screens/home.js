@@ -40,18 +40,16 @@ export default class Home extends PureComponent {
   };
 
   loadData = async () => {
-    try {
-      const { lat, lon } = this.state;
-      if (lat && lon) {
-        const data = await getData(lat, lon);
+    const { lat, lon } = this.state;
+    if (lat && lon) {
+      const data = await getData(lat, lon);
+      if (data) {
         this.setState({
           loading: false,
           init: false,
           data: data
         });
       }
-    } catch (error) {
-      // TODO
     }
   };
 
